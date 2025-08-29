@@ -1,0 +1,510 @@
+@import './base.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 自定义样式 */
+body {
+  font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  min-height: 100vh;
+}
+
+#app {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* 淡蓝色主题 */
+.bg-primary-gradient {
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+}
+
+.text-primary {
+  color: #1976d2;
+}
+
+/* 动画效果 */
+.student-card {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.student-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.student-card.shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-3px); }
+  20%, 40%, 60%, 80% { transform: translateX(3px); }
+}
+
+/* 通用动画效果 */
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.slide-in-up {
+  animation: slideInUp 0.5s ease-out;
+}
+
+.slide-in-down {
+  animation: slideInDown 0.5s ease-out;
+}
+
+.bounce-in {
+  animation: bounceIn 0.6s ease-out;
+}
+
+.scale-in {
+  animation: scaleIn 0.4s ease-out;
+}
+
+.rotate-in {
+  animation: rotateIn 0.5s ease-out;
+}
+
+/* 悬停效果 */
+.hover-lift {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.hover-glow {
+  transition: all 0.3s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(33, 150, 243, 0.4);
+  border-color: #2196f3;
+}
+
+.hover-scale {
+  transition: transform 0.2s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* 按钮动效 */
+.btn-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-ripple::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn-ripple:active::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* 加载动效 */
+.loading-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.loading-spin {
+  animation: spin 1s linear infinite;
+}
+
+.loading-bounce {
+  animation: bounce 1s ease-in-out infinite;
+}
+
+/* 卡片效果 */
+.card-entrance {
+  animation: cardEntrance 0.6s ease-out;
+}
+
+.card-exit {
+  animation: cardExit 0.3s ease-in;
+}
+
+/* 文字效果 */
+.text-gradient {
+  background: linear-gradient(45deg, #2196f3, #21cbf3);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 200%;
+  animation: textShimmer 3s ease-in-out infinite;
+}
+
+.typing-effect {
+  overflow: hidden;
+  border-right: 2px solid #2196f3;
+  white-space: nowrap;
+  margin: 0 auto;
+  animation: typing 2s steps(40, end), blink 1s step-end infinite;
+}
+
+/* 进度条动效 */
+.progress-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-glow::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: progressShine 2s infinite;
+}
+
+/* 自定义动画帧 */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes rotateIn {
+  from {
+    opacity: 0;
+    transform: rotate(-200deg);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-25%);
+  }
+}
+
+@keyframes cardEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(50px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes cardExit {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.9);
+  }
+}
+
+@keyframes textShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #2196f3;
+  }
+}
+
+@keyframes progressShine {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Element Plus 样式覆盖 */
+.el-menu {
+  border-right: none;
+}
+
+.el-header {
+  background: linear-gradient(90deg, #2196f3 0%, #21cbf3 100%);
+  color: white;
+}
+
+.el-aside {
+  background-color: #f8f9fa;
+}
+
+/* 卡片样式增强 */
+.el-card {
+  border-radius: 12px;
+  border: 1px solid #e8eaec;
+  transition: all 0.3s ease;
+}
+
+.el-card:hover {
+  border-color: #c6e2ff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* 按钮样式增强 */
+.el-button {
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.el-button--primary {
+  background: linear-gradient(45deg, #2196f3, #21cbf3);
+  border: none;
+  color: white;
+}
+
+.el-button--primary:hover {
+  background: linear-gradient(45deg, #1976d2, #1ba8c7);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.4);
+}
+
+/* 小尺寸按钮优化 */
+.el-button--small {
+  padding: 5px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  min-width: 60px;
+}
+
+/* 危险按钮样式 */
+.el-button--danger {
+  background: linear-gradient(45deg, #f44336, #ff5722);
+  border: none;
+  color: white;
+}
+
+.el-button--danger:hover {
+  background: linear-gradient(45deg, #d32f2f, #e64a19);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(244, 67, 54, 0.4);
+}
+
+/* 信息按钮样式 */
+.el-button--info {
+  background: linear-gradient(45deg, #607d8b, #78909c);
+  border: none;
+  color: white;
+}
+
+.el-button--info:hover {
+  background: linear-gradient(45deg, #455a64, #546e7a);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(96, 125, 139, 0.4);
+}
+
+/* 输入框样式增强 */
+.el-input__wrapper {
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.el-input__wrapper:hover {
+  box-shadow: 0 0 8px rgba(33, 150, 243, 0.2);
+}
+
+.el-input__wrapper.is-focus {
+  box-shadow: 0 0 12px rgba(33, 150, 243, 0.3);
+}
+
+/* 表格样式增强 */
+.el-table {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.el-table__header th {
+  background-color: #f8f9fa;
+  color: #333;
+  font-weight: 600;
+}
+
+.el-table__row:hover {
+  background-color: #f0f9ff;
+}
+
+/* 对话框样式增强 */
+.el-dialog {
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.el-dialog__header {
+  background: linear-gradient(90deg, #f8f9fa 0%, #e3f2fd 100%);
+  padding: 20px 24px;
+  border-bottom: 1px solid #e8eaec;
+}
+
+.el-dialog__title {
+  font-weight: 600;
+  color: #1976d2;
+}
+
+/* 消息样式增强 */
+.el-message {
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+}
+
+/* 图标样式增强 */
+.el-icon {
+  transition: all 0.3s ease;
+}
+
+.icon-hover:hover {
+  color: #2196f3;
+  transform: scale(1.1);
+}
+
+/* 响应式设计增强 */
+@media (max-width: 768px) {
+  .card-entrance {
+    animation-duration: 0.4s;
+  }
+  
+  .hover-lift:hover {
+    transform: none;
+  }
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2196f3;
+}
